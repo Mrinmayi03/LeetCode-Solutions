@@ -1,0 +1,16 @@
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        left = 0
+        right = len(s) - 1
+
+        while (left < right and s[left] == s[right]):
+            #s[left] = s[right] confirms that if initially the characters at the two ends are not the same , the rest of the functions wont be executed at all. 
+            character = s[left]
+
+            while (left <= right and s[left] == character):
+                left = left + 1
+            
+            while (right >= left and s[right] == character):
+                right = right - 1
+
+        return right - left + 1
