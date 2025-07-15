@@ -1,0 +1,15 @@
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        left = 0
+        k = len(s1)
+        hashS1 = {}
+        for letter_s1 in s1:
+            hashS1[letter_s1] = hashS1.get(letter_s1 , 0) + 1
+        while left < (len(s2) - k + 1):
+            hashS2 = {}
+            for letter_s2 in s2[left : left + k]:
+                hashS2[letter_s2] = hashS2.get(letter_s2 , 0) + 1
+            if hashS1 == hashS2:
+                return True
+            left += 1
+        return False  
