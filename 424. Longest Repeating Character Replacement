@@ -1,0 +1,15 @@
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        maxLen = 0
+        left , right = 0 , 0
+        hashFreq = {}
+        while right < len(s):
+            hashFreq[s[right]] = hashFreq.get(s[right] , 0) + 1
+            maxFreq = max(hashFreq.values())
+            if (right - left + 1) - maxFreq > k:
+                hashFreq[s[left]] -= 1
+                left += 1
+            maxLen = max(maxLen , right - left + 1)
+            right += 1
+        print(hashFreq)
+        return maxLen
